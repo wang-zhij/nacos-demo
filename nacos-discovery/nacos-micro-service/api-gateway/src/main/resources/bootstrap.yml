@@ -1,0 +1,25 @@
+server:
+  port: 56010
+
+spring:
+  application:
+    name: api-gateway
+  main:
+    allow-bean-definition-overriding: true #spring boot 2.1需要设定
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 127.0.0.1:8848
+        namespace: b4f2c8a0-9a06-4d0a-a273-9d5dae57d3cd
+        cluster-name: DEFAULT
+      config:
+        server-addr: 127.0.0.1:8848
+        file-extension: yaml
+        namespace: b4f2c8a0-9a06-4d0a-a273-9d5dae57d3cd
+        group: TEST_GROUP
+
+#uul:
+# routes:
+#   application1:
+#     stripPrefix: false
+#     path: application1/**

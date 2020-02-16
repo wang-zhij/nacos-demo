@@ -1,0 +1,31 @@
+server:
+  port: ${port:56040}
+
+spring:
+  application:
+    name: service2
+  main:
+    allow-bean-definition-overriding: true #spring boot 2.1需要设定
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 127.0.0.1:8848
+        namespace: b4f2c8a0-9a06-4d0a-a273-9d5dae57d3cd
+        cluster-name: DEFAULT
+      config:
+        server-addr: 127.0.0.1:8848
+        file-extension: yaml
+        namespace: b4f2c8a0-9a06-4d0a-a273-9d5dae57d3cd
+        group: TEST_GROUP
+dubbo:
+  scan:
+    base-packages: com.wzj.nacos
+  protocol:
+    name: dubbo
+    port: ${dubbo_port:20891}
+  registry:
+    address: nacos://127.0.0.1:8848
+  application:
+    qos-enable: false #dubbo运维服务是否开启
+  consumer:
+    check: false #启动检查依赖服务
